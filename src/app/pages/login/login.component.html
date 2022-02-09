@@ -1,0 +1,27 @@
+<div class="body">
+    <div class="login">
+        <mat-spinner *ngIf="loadingSpinner" class="spinner"></mat-spinner>
+        <form *ngIf="!loadingSpinner" [formGroup]="form" (ngSubmit)="login()">
+            <img [src]="logo" alt="">
+            <h1 class="h3 mb-3 fw-normal">Login</h1>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Perfil</mat-label>
+                <mat-select [(value)]="selectedValue" name="profile">
+                  <mat-option *ngFor="let profile of profiles" [value]="profile.value">
+                    {{profile.viewValue}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input type="text" matInput autocomplete="off" formControlName="user">
+            </mat-form-field>
+            <mat-form-field class="form-field" appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput autocomplete="off" formControlName="password">
+            </mat-form-field>
+            <br>
+            <button type="submit" class="form-field" mat-raised-button mat-button color="primary" [disabled]="form.invalid">Acceder</button>
+        </form>
+    </div>
+</div>
